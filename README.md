@@ -8,4 +8,4 @@ Also allow the user to enter his/her username and view it in the home page.
 ![image description](ScreenShots/Task1.png)
 ![image description](ScreenShots/Task2.png)
 ![image description](ScreenShots/Task3.png)
-![image description](ScreenShots/After Adding New Username.png)
+![image description](ScreenShots/AfterAddingNewUsername.png)
