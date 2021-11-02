@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     tools:context=".TaskDetailPage">
 
     <Toolbar
@@ -32,12 +33,15 @@
         app:layout_constraintVertical_bias="0.432" />
 
     <TextView
-        android:id="@+id/textView13"
-        android:layout_width="416dp"
-        android:layout_height="289dp"
+        android:id="@+id/bodyTask"
+        android:layout_width="332dp"
+        android:layout_height="144dp"
         android:text="@string/ipsum"
-        android:textSize="20sp"
         android:textColor="@color/black"
+        android:textSize="25sp"
+        android:fontFamily="cursive"
+        android:textAlignment="center"
+        android:textStyle="italic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.521"
@@ -46,17 +50,38 @@
         app:layout_constraintVertical_bias="0.136" />
 
     <TextView
-        android:id="@+id/textView14"
-        android:layout_width="407dp"
-        android:layout_height="45dp"
+        android:id="@+id/titleTask"
+        android:layout_width="414dp"
+        android:layout_height="61dp"
+        android:layout_marginTop="8dp"
         android:text="@string/lorem_ipsum"
+        android:fontFamily="cursive"
         android:textColor="@color/black"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView13"
+        android:textSize="30sp"
+        android:textAlignment="center"
+        android:textStyle="bold"
+
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.085"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+    <TextView
+        android:id="@+id/stateTask"
+        android:layout_width="143dp"
+        android:layout_height="77dp"
+        android:layout_marginBottom="184dp"
+        android:text="State"
+        android:fontFamily="cursive"
+        android:textAlignment="center"
+        android:textColor="@color/red"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bodyTask"
+        app:layout_constraintVertical_bias="0.0" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
