@@ -31,19 +31,32 @@ public class TaskDetailPage extends AppCompatActivity {
             }
         });
 
-        Intent intentTask1 = getIntent();
-        String task1 = intentTask1.getExtras().getString("task1");
-        TextView textView1 = findViewById(R.id.textView14);
+        Intent intent  = getIntent();
+        String task1 = intent.getStringExtra("title");
+        String body = intent.getStringExtra("body");
+        String state = intent.getStringExtra("state");
+        TextView textView1 = findViewById(R.id.titleTask);
+        TextView textView2 = findViewById(R.id.bodyTask);
+        TextView textView3 = findViewById(R.id.stateTask);
+
         textView1.setText(task1);
+        textView2.setText(body);
+        textView3.setText(state);
 
-        Intent intentTask2 = getIntent();
-        String task2 = intentTask2.getExtras().getString("task2");
-        @SuppressLint("CutPasteId") TextView textView2 = findViewById(R.id.textView14);
-        textView2.setText(task2);
 
-        Intent intentTask3 = getIntent();
-        String task3 = intentTask3.getExtras().getString("task3");
-        @SuppressLint("CutPasteId") TextView textView3 = findViewById(R.id.textView14);
-        textView3.setText(task3);
+//        Intent intentTask1 = getIntent();
+//        String task1 = intentTask1.getExtras().getString("task1");
+//        TextView textView1 = findViewById(R.id.textView14);
+//        textView1.setText(task1);
+//
+//        Intent intentTask2 = getIntent();
+//        String task2 = intentTask2.getExtras().getString("task2");
+//        @SuppressLint("CutPasteId") TextView textView2 = findViewById(R.id.textView14);
+//        textView2.setText(task2);
+//
+//        Intent intentTask3 = getIntent();
+//        String task3 = intentTask3.getExtras().getString("task3");
+//        @SuppressLint("CutPasteId") TextView textView3 = findViewById(R.id.textView14);
+//        textView3.setText(task3);
     }
 }
