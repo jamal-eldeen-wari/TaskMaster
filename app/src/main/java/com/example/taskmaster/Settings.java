@@ -42,7 +42,9 @@ public class Settings extends AppCompatActivity {
                 EditText editText = findViewById(R.id.editTextTextPersonName3);
                 String userName = editText.getText().toString();
                 editor.putString("username",userName);
+                Intent intent = new Intent(Settings.this, MainActivity.class);
                 editor.commit();
+                startActivity(intent);
             }
         });
 
