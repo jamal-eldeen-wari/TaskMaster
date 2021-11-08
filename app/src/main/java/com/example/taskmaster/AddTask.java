@@ -8,6 +8,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,9 +16,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
+import com.amplifyframework.api.graphql.model.ModelMutation;
+import com.amplifyframework.core.Amplify;
+import com.amplifyframework.datastore.generated.model.Task;
+
 import java.util.List;
 
 public class AddTask extends AppCompatActivity {
+    public static final String TAG = "ADD TASK";
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -46,8 +52,21 @@ public class AddTask extends AppCompatActivity {
                 String description = editText1.getText().toString();
                 String state = editText2.getText().toString();
 
-                Task task = new Task(title,description,state);
-                dao.insertAll(task);
+//                Task task = new Task(title,description,state);
+//                dao.insertAll(task);
+                Task task = Task.builder()
+                        .title(title)
+                        .body(description)
+                        .state(state)
+                        .build();
+
+                Amplify.API.mutate(
+                        ModelMutation.create(task),
+                        response -> Log.i(TAG, "Added task with id: " + response.getData().getId()),
+                        error -> Log.e(TAG, "Create failed", error)
+                );
+                Intent goToHomePage = new Intent(AddTask.this, MainActivity.class);
+                startActivity(goToHomePage);
 
 
             }
@@ -64,4 +83,5 @@ public class AddTask extends AppCompatActivity {
             }
         });
     }
+
 }
