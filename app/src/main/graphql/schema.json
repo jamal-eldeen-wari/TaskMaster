@@ -16,6 +16,59 @@
                 "description": null,
                 "fields": [
                     {
+                        "name": "syncTasks",
+                        "description": null,
+                        "args": [
+                            {
+                                "name": "filter",
+                                "description": null,
+                                "type": {
+                                    "kind": "INPUT_OBJECT",
+                                    "name": "ModelTaskFilterInput",
+                                    "ofType": null
+                                },
+                                "defaultValue": null
+                            },
+                            {
+                                "name": "limit",
+                                "description": null,
+                                "type": {
+                                    "kind": "SCALAR",
+                                    "name": "Int",
+                                    "ofType": null
+                                },
+                                "defaultValue": null
+                            },
+                            {
+                                "name": "nextToken",
+                                "description": null,
+                                "type": {
+                                    "kind": "SCALAR",
+                                    "name": "String",
+                                    "ofType": null
+                                },
+                                "defaultValue": null
+                            },
+                            {
+                                "name": "lastSync",
+                                "description": null,
+                                "type": {
+                                    "kind": "SCALAR",
+                                    "name": "AWSTimestamp",
+                                    "ofType": null
+                                },
+                                "defaultValue": null
+                            }
+                        ],
+                        "type": {
+                            "kind": "OBJECT",
+                            "name": "ModelTaskConnection",
+                            "ofType": null
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
                         "name": "getTask",
                         "description": null,
                         "args": [
@@ -84,147 +137,133 @@
                         },
                         "isDeprecated": false,
                         "deprecationReason": null
+                    },
+                    {
+                        "name": "syncTeams",
+                        "description": null,
+                        "args": [
+                            {
+                                "name": "filter",
+                                "description": null,
+                                "type": {
+                                    "kind": "INPUT_OBJECT",
+                                    "name": "ModelTeamFilterInput",
+                                    "ofType": null
+                                },
+                                "defaultValue": null
+                            },
+                            {
+                                "name": "limit",
+                                "description": null,
+                                "type": {
+                                    "kind": "SCALAR",
+                                    "name": "Int",
+                                    "ofType": null
+                                },
+                                "defaultValue": null
+                            },
+                            {
+                                "name": "nextToken",
+                                "description": null,
+                                "type": {
+                                    "kind": "SCALAR",
+                                    "name": "String",
+                                    "ofType": null
+                                },
+                                "defaultValue": null
+                            },
+                            {
+                                "name": "lastSync",
+                                "description": null,
+                                "type": {
+                                    "kind": "SCALAR",
+                                    "name": "AWSTimestamp",
+                                    "ofType": null
+                                },
+                                "defaultValue": null
+                            }
+                        ],
+                        "type": {
+                            "kind": "OBJECT",
+                            "name": "ModelTeamConnection",
+                            "ofType": null
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "getTeam",
+                        "description": null,
+                        "args": [
+                            {
+                                "name": "id",
+                                "description": null,
+                                "type": {
+                                    "kind": "NON_NULL",
+                                    "name": null,
+                                    "ofType": {
+                                        "kind": "SCALAR",
+                                        "name": "ID",
+                                        "ofType": null
+                                    }
+                                },
+                                "defaultValue": null
+                            }
+                        ],
+                        "type": {
+                            "kind": "OBJECT",
+                            "name": "Team",
+                            "ofType": null
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "listTeams",
+                        "description": null,
+                        "args": [
+                            {
+                                "name": "filter",
+                                "description": null,
+                                "type": {
+                                    "kind": "INPUT_OBJECT",
+                                    "name": "ModelTeamFilterInput",
+                                    "ofType": null
+                                },
+                                "defaultValue": null
+                            },
+                            {
+                                "name": "limit",
+                                "description": null,
+                                "type": {
+                                    "kind": "SCALAR",
+                                    "name": "Int",
+                                    "ofType": null
+                                },
+                                "defaultValue": null
+                            },
+                            {
+                                "name": "nextToken",
+                                "description": null,
+                                "type": {
+                                    "kind": "SCALAR",
+                                    "name": "String",
+                                    "ofType": null
+                                },
+                                "defaultValue": null
+                            }
+                        ],
+                        "type": {
+                            "kind": "OBJECT",
+                            "name": "ModelTeamConnection",
+                            "ofType": null
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
                     }
                 ],
                 "inputFields": null,
                 "interfaces": [],
-                "enumValues": null,
-                "possibleTypes": null
-            },
-            {
-                "kind": "SCALAR",
-                "name": "ID",
-                "description": "The `ID` scalar type represents a unique identifier, often used to refetch an object or as key for a cache. The ID type appears in a JSON response as a String; however, it is not intended to be human-readable. When expected as an input type, any string (such as `\"4\"`) or integer (such as `4`) input value will be accepted as an ID.",
-                "fields": null,
-                "inputFields": null,
-                "interfaces": null,
-                "enumValues": null,
-                "possibleTypes": null
-            },
-            {
-                "kind": "OBJECT",
-                "name": "Task",
-                "description": null,
-                "fields": [
-                    {
-                        "name": "id",
-                        "description": null,
-                        "args": [],
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "ID",
-                                "ofType": null
-                            }
-                        },
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "title",
-                        "description": null,
-                        "args": [],
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "String",
-                                "ofType": null
-                            }
-                        },
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "body",
-                        "description": null,
-                        "args": [],
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "String",
-                                "ofType": null
-                            }
-                        },
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "state",
-                        "description": null,
-                        "args": [],
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "String",
-                                "ofType": null
-                            }
-                        },
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "createdAt",
-                        "description": null,
-                        "args": [],
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "AWSDateTime",
-                                "ofType": null
-                            }
-                        },
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "updatedAt",
-                        "description": null,
-                        "args": [],
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "AWSDateTime",
-                                "ofType": null
-                            }
-                        },
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    }
-                ],
-                "inputFields": null,
-                "interfaces": [],
-                "enumValues": null,
-                "possibleTypes": null
-            },
-            {
-                "kind": "SCALAR",
-                "name": "String",
-                "description": "The `String` scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text.",
-                "fields": null,
-                "inputFields": null,
-                "interfaces": null,
-                "enumValues": null,
-                "possibleTypes": null
-            },
-            {
-                "kind": "SCALAR",
-                "name": "AWSDateTime",
-                "description": null,
-                "fields": null,
-                "inputFields": null,
-                "interfaces": null,
                 "enumValues": null,
                 "possibleTypes": null
             },
@@ -236,6 +275,16 @@
                 "inputFields": [
                     {
                         "name": "id",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelIDInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "teamId",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -458,6 +507,16 @@
                         "defaultValue": null
                     }
                 ],
+                "interfaces": null,
+                "enumValues": null,
+                "possibleTypes": null
+            },
+            {
+                "kind": "SCALAR",
+                "name": "ID",
+                "description": "The `ID` scalar type represents a unique identifier, often used to refetch an object or as key for a cache. The ID type appears in a JSON response as a String; however, it is not intended to be human-readable. When expected as an input type, any string (such as `\"4\"`) or integer (such as `4`) input value will be accepted as an ID.",
+                "fields": null,
+                "inputFields": null,
                 "interfaces": null,
                 "enumValues": null,
                 "possibleTypes": null
@@ -784,6 +843,26 @@
                 "possibleTypes": null
             },
             {
+                "kind": "SCALAR",
+                "name": "String",
+                "description": "The `String` scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text.",
+                "fields": null,
+                "inputFields": null,
+                "interfaces": null,
+                "enumValues": null,
+                "possibleTypes": null
+            },
+            {
+                "kind": "SCALAR",
+                "name": "AWSTimestamp",
+                "description": null,
+                "fields": null,
+                "inputFields": null,
+                "interfaces": null,
+                "enumValues": null,
+                "possibleTypes": null
+            },
+            {
                 "kind": "OBJECT",
                 "name": "ModelTaskConnection",
                 "description": null,
@@ -811,6 +890,526 @@
                         "type": {
                             "kind": "SCALAR",
                             "name": "String",
+                            "ofType": null
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "startedAt",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "AWSTimestamp",
+                            "ofType": null
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    }
+                ],
+                "inputFields": null,
+                "interfaces": [],
+                "enumValues": null,
+                "possibleTypes": null
+            },
+            {
+                "kind": "OBJECT",
+                "name": "Task",
+                "description": null,
+                "fields": [
+                    {
+                        "name": "id",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "ID",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "teamId",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "ID",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "title",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "body",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "state",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "team",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "OBJECT",
+                                "name": "Team",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "_version",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "Int",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "_deleted",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "Boolean",
+                            "ofType": null
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "_lastChangedAt",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "AWSTimestamp",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "createdAt",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "AWSDateTime",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "updatedAt",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "AWSDateTime",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    }
+                ],
+                "inputFields": null,
+                "interfaces": [],
+                "enumValues": null,
+                "possibleTypes": null
+            },
+            {
+                "kind": "OBJECT",
+                "name": "Team",
+                "description": null,
+                "fields": [
+                    {
+                        "name": "id",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "ID",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "teamName",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "tasks",
+                        "description": null,
+                        "args": [
+                            {
+                                "name": "filter",
+                                "description": null,
+                                "type": {
+                                    "kind": "INPUT_OBJECT",
+                                    "name": "ModelTaskFilterInput",
+                                    "ofType": null
+                                },
+                                "defaultValue": null
+                            },
+                            {
+                                "name": "sortDirection",
+                                "description": null,
+                                "type": {
+                                    "kind": "ENUM",
+                                    "name": "ModelSortDirection",
+                                    "ofType": null
+                                },
+                                "defaultValue": null
+                            },
+                            {
+                                "name": "limit",
+                                "description": null,
+                                "type": {
+                                    "kind": "SCALAR",
+                                    "name": "Int",
+                                    "ofType": null
+                                },
+                                "defaultValue": null
+                            },
+                            {
+                                "name": "nextToken",
+                                "description": null,
+                                "type": {
+                                    "kind": "SCALAR",
+                                    "name": "String",
+                                    "ofType": null
+                                },
+                                "defaultValue": null
+                            }
+                        ],
+                        "type": {
+                            "kind": "OBJECT",
+                            "name": "ModelTaskConnection",
+                            "ofType": null
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "_version",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "Int",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "_deleted",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "Boolean",
+                            "ofType": null
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "_lastChangedAt",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "AWSTimestamp",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "createdAt",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "AWSDateTime",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "updatedAt",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "AWSDateTime",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    }
+                ],
+                "inputFields": null,
+                "interfaces": [],
+                "enumValues": null,
+                "possibleTypes": null
+            },
+            {
+                "kind": "ENUM",
+                "name": "ModelSortDirection",
+                "description": null,
+                "fields": null,
+                "inputFields": null,
+                "interfaces": null,
+                "enumValues": [
+                    {
+                        "name": "ASC",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "DESC",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    }
+                ],
+                "possibleTypes": null
+            },
+            {
+                "kind": "SCALAR",
+                "name": "AWSDateTime",
+                "description": null,
+                "fields": null,
+                "inputFields": null,
+                "interfaces": null,
+                "enumValues": null,
+                "possibleTypes": null
+            },
+            {
+                "kind": "INPUT_OBJECT",
+                "name": "ModelTeamFilterInput",
+                "description": null,
+                "fields": null,
+                "inputFields": [
+                    {
+                        "name": "id",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelIDInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "teamName",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "and",
+                        "description": null,
+                        "type": {
+                            "kind": "LIST",
+                            "name": null,
+                            "ofType": {
+                                "kind": "INPUT_OBJECT",
+                                "name": "ModelTeamFilterInput",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "or",
+                        "description": null,
+                        "type": {
+                            "kind": "LIST",
+                            "name": null,
+                            "ofType": {
+                                "kind": "INPUT_OBJECT",
+                                "name": "ModelTeamFilterInput",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "not",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelTeamFilterInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    }
+                ],
+                "interfaces": null,
+                "enumValues": null,
+                "possibleTypes": null
+            },
+            {
+                "kind": "OBJECT",
+                "name": "ModelTeamConnection",
+                "description": null,
+                "fields": [
+                    {
+                        "name": "items",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "LIST",
+                            "name": null,
+                            "ofType": {
+                                "kind": "OBJECT",
+                                "name": "Team",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "nextToken",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "String",
+                            "ofType": null
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "startedAt",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "AWSTimestamp",
                             "ofType": null
                         },
                         "isDeprecated": false,
@@ -937,6 +1536,117 @@
                         },
                         "isDeprecated": false,
                         "deprecationReason": null
+                    },
+                    {
+                        "name": "createTeam",
+                        "description": null,
+                        "args": [
+                            {
+                                "name": "input",
+                                "description": null,
+                                "type": {
+                                    "kind": "NON_NULL",
+                                    "name": null,
+                                    "ofType": {
+                                        "kind": "INPUT_OBJECT",
+                                        "name": "CreateTeamInput",
+                                        "ofType": null
+                                    }
+                                },
+                                "defaultValue": null
+                            },
+                            {
+                                "name": "condition",
+                                "description": null,
+                                "type": {
+                                    "kind": "INPUT_OBJECT",
+                                    "name": "ModelTeamConditionInput",
+                                    "ofType": null
+                                },
+                                "defaultValue": null
+                            }
+                        ],
+                        "type": {
+                            "kind": "OBJECT",
+                            "name": "Team",
+                            "ofType": null
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "updateTeam",
+                        "description": null,
+                        "args": [
+                            {
+                                "name": "input",
+                                "description": null,
+                                "type": {
+                                    "kind": "NON_NULL",
+                                    "name": null,
+                                    "ofType": {
+                                        "kind": "INPUT_OBJECT",
+                                        "name": "UpdateTeamInput",
+                                        "ofType": null
+                                    }
+                                },
+                                "defaultValue": null
+                            },
+                            {
+                                "name": "condition",
+                                "description": null,
+                                "type": {
+                                    "kind": "INPUT_OBJECT",
+                                    "name": "ModelTeamConditionInput",
+                                    "ofType": null
+                                },
+                                "defaultValue": null
+                            }
+                        ],
+                        "type": {
+                            "kind": "OBJECT",
+                            "name": "Team",
+                            "ofType": null
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "deleteTeam",
+                        "description": null,
+                        "args": [
+                            {
+                                "name": "input",
+                                "description": null,
+                                "type": {
+                                    "kind": "NON_NULL",
+                                    "name": null,
+                                    "ofType": {
+                                        "kind": "INPUT_OBJECT",
+                                        "name": "DeleteTeamInput",
+                                        "ofType": null
+                                    }
+                                },
+                                "defaultValue": null
+                            },
+                            {
+                                "name": "condition",
+                                "description": null,
+                                "type": {
+                                    "kind": "INPUT_OBJECT",
+                                    "name": "ModelTeamConditionInput",
+                                    "ofType": null
+                                },
+                                "defaultValue": null
+                            }
+                        ],
+                        "type": {
+                            "kind": "OBJECT",
+                            "name": "Team",
+                            "ofType": null
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
                     }
                 ],
                 "inputFields": null,
@@ -957,6 +1667,20 @@
                             "kind": "SCALAR",
                             "name": "ID",
                             "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "teamId",
+                        "description": null,
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "ID",
+                                "ofType": null
+                            }
                         },
                         "defaultValue": null
                     },
@@ -1001,6 +1725,16 @@
                             }
                         },
                         "defaultValue": null
+                    },
+                    {
+                        "name": "_version",
+                        "description": null,
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "Int",
+                            "ofType": null
+                        },
+                        "defaultValue": null
                     }
                 ],
                 "interfaces": null,
@@ -1013,6 +1747,16 @@
                 "description": null,
                 "fields": null,
                 "inputFields": [
+                    {
+                        "name": "teamId",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelIDInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
                     {
                         "name": "title",
                         "description": null,
@@ -1107,6 +1851,16 @@
                         "defaultValue": null
                     },
                     {
+                        "name": "teamId",
+                        "description": null,
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "ID",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
                         "name": "title",
                         "description": null,
                         "type": {
@@ -1135,6 +1889,16 @@
                             "ofType": null
                         },
                         "defaultValue": null
+                    },
+                    {
+                        "name": "_version",
+                        "description": null,
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "Int",
+                            "ofType": null
+                        },
+                        "defaultValue": null
                     }
                 ],
                 "interfaces": null,
@@ -1158,6 +1922,200 @@
                                 "name": "ID",
                                 "ofType": null
                             }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "_version",
+                        "description": null,
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "Int",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    }
+                ],
+                "interfaces": null,
+                "enumValues": null,
+                "possibleTypes": null
+            },
+            {
+                "kind": "INPUT_OBJECT",
+                "name": "CreateTeamInput",
+                "description": null,
+                "fields": null,
+                "inputFields": [
+                    {
+                        "name": "id",
+                        "description": null,
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "ID",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "teamName",
+                        "description": null,
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "_version",
+                        "description": null,
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "Int",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    }
+                ],
+                "interfaces": null,
+                "enumValues": null,
+                "possibleTypes": null
+            },
+            {
+                "kind": "INPUT_OBJECT",
+                "name": "ModelTeamConditionInput",
+                "description": null,
+                "fields": null,
+                "inputFields": [
+                    {
+                        "name": "teamName",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "and",
+                        "description": null,
+                        "type": {
+                            "kind": "LIST",
+                            "name": null,
+                            "ofType": {
+                                "kind": "INPUT_OBJECT",
+                                "name": "ModelTeamConditionInput",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "or",
+                        "description": null,
+                        "type": {
+                            "kind": "LIST",
+                            "name": null,
+                            "ofType": {
+                                "kind": "INPUT_OBJECT",
+                                "name": "ModelTeamConditionInput",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "not",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelTeamConditionInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    }
+                ],
+                "interfaces": null,
+                "enumValues": null,
+                "possibleTypes": null
+            },
+            {
+                "kind": "INPUT_OBJECT",
+                "name": "UpdateTeamInput",
+                "description": null,
+                "fields": null,
+                "inputFields": [
+                    {
+                        "name": "id",
+                        "description": null,
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "ID",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "teamName",
+                        "description": null,
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "String",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "_version",
+                        "description": null,
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "Int",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    }
+                ],
+                "interfaces": null,
+                "enumValues": null,
+                "possibleTypes": null
+            },
+            {
+                "kind": "INPUT_OBJECT",
+                "name": "DeleteTeamInput",
+                "description": null,
+                "fields": null,
+                "inputFields": [
+                    {
+                        "name": "id",
+                        "description": null,
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "ID",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "_version",
+                        "description": null,
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "Int",
+                            "ofType": null
                         },
                         "defaultValue": null
                     }
@@ -1202,6 +2160,42 @@
                         "type": {
                             "kind": "OBJECT",
                             "name": "Task",
+                            "ofType": null
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "onCreateTeam",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "OBJECT",
+                            "name": "Team",
+                            "ofType": null
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "onUpdateTeam",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "OBJECT",
+                            "name": "Team",
+                            "ofType": null
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "onDeleteTeam",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "OBJECT",
+                            "name": "Team",
                             "ofType": null
                         },
                         "isDeprecated": false,
@@ -2031,16 +3025,6 @@
             },
             {
                 "kind": "SCALAR",
-                "name": "AWSTimestamp",
-                "description": null,
-                "fields": null,
-                "inputFields": null,
-                "interfaces": null,
-                "enumValues": null,
-                "possibleTypes": null
-            },
-            {
-                "kind": "SCALAR",
                 "name": "AWSEmail",
                 "description": null,
                 "fields": null,
@@ -2107,29 +3091,6 @@
                 "inputFields": null,
                 "interfaces": null,
                 "enumValues": null,
-                "possibleTypes": null
-            },
-            {
-                "kind": "ENUM",
-                "name": "ModelSortDirection",
-                "description": null,
-                "fields": null,
-                "inputFields": null,
-                "interfaces": null,
-                "enumValues": [
-                    {
-                        "name": "ASC",
-                        "description": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "DESC",
-                        "description": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    }
-                ],
                 "possibleTypes": null
             },
             {
