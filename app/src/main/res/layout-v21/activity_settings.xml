@@ -69,6 +69,7 @@
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName3" />
 
     <RadioGroup
+        android:id="@+id/sittingsRadioGroup"
         android:layout_width="386dp"
         android:layout_height="91dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -79,11 +80,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Team 1"
-            android:id="@+id/team_1RBtn"
+            android:id="@+id/team_1RBTN"
             />
 
         <RadioButton
-            android:id="@+id/team_2RBtn"
+            android:id="@+id/team_2RBTN"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Team 2" />
@@ -92,6 +93,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Team 3"
-            android:id="@+id/team_3RBtn"/>
+            android:id="@+id/team_3RBTN"/>
     </RadioGroup>
 </androidx.constraintlayout.widget.ConstraintLayout>

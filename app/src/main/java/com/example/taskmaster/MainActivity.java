@@ -5,7 +5,7 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.room.Room;
+//import androidx.room.Room;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -17,6 +17,7 @@ import android.os.Looper;
 import android.os.Message;
 import android.preference.PreferenceManager;
 import android.util.Log;
+import android.view.Display;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -24,10 +25,15 @@ import android.widget.Toolbar;
 
 import com.amplifyframework.AmplifyException;
 import com.amplifyframework.api.aws.AWSApiPlugin;
+import com.amplifyframework.api.graphql.model.ModelMutation;
 import com.amplifyframework.api.graphql.model.ModelQuery;
 import com.amplifyframework.core.Amplify;
+import com.amplifyframework.datastore.generated.model.Team;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -147,6 +153,119 @@ public class MainActivity extends AppCompatActivity {
 //        allTasks.setAdapter(new TaskAdapter(taskData));
 
 
+//=============================== 3 TEAMS Manually As Requested=================================================================
+
+        SharedPreferences sh = PreferenceManager.getDefaultSharedPreferences(this);
+        List<Team> allTeams  = new ArrayList<>();
+
+        allTeams.add(Team.builder().teamName("Team 1").build());
+        allTeams.add(Team.builder().teamName("Team 2").build());
+        allTeams.add(Team.builder().teamName("Team 3").build());
+
+        Amplify.API.mutate(
+                ModelMutation.create(allTeams.get(0)),success->{
+                    if (success.getData().getId() != null) {
+                        Log.i(TAG, "Team 1 id is:  " + success.getData().getId());
+                        sh.edit().putString(allTeams.get(0).getTeamName(), success.getData().getId()).apply();
+                    }
+
+        },error->{
+                   Log.i(TAG,"I hate Errorssssssssssssss");
+                });
+
+        Amplify.API.mutate(
+                ModelMutation.create(allTeams.get(1)),success->{
+                    if (success.getData().getId() != null) {
+                        Log.i(TAG, "Team 2 id is: " + success.getData().getId());
+                        sh.edit().putString(allTeams.get(1).getTeamName(), success.getData().getId()).apply();
+                    }
+                },error->{
+
+                    Log.i(TAG,"I hate Errorsssssss");
+                }
+        );
+        Amplify.API.mutate(
+                ModelMutation.create(allTeams.get(2)),success->{
+                    if (success.getData().getId() != null) {
+                        Log.i(TAG, "Team 3 id is: " + success.getData().getId());
+                        sh.edit().putString(allTeams.get(2).getTeamName(), success.getData().getId()).apply();
+                    }
+                },error->{
+
+                    Log.i(TAG,"I hate Errorsssssss");
+                }
+        );
+
+//===================================Getting Tasks and view them in the recycler view========================================
+
+        List<Task> tasks1 = new ArrayList<>();
+        List<com.amplifyframework.datastore.generated.model.Task> taskList = new ArrayList<>();
+
+        String teamIdFromSettings = sh.getString("settingsTeamID",null);
+
+        if(teamIdFromSettings == null){
+
+
+        Amplify.API.query(
+                ModelQuery.list(com.amplifyframework.datastore.generated.model.Task.class),success->{
+
+                    for(com.amplifyframework.datastore.generated.model.Task task:success.getData()){
+                        taskList.add(task);
+                    }
+
+                    Collections.sort(taskList, new Comparator<com.amplifyframework.datastore.generated.model.Task>() {
+                        @Override
+                        public int compare(com.amplifyframework.datastore.generated.model.Task o1, com.amplifyframework.datastore.generated.model.Task o2) {
+                            return Long.compare(o1.getCreatedAt().toDate().getTime(), o2.getCreatedAt().toDate().getTime());
+                        }
+
+                        @Override
+                        public boolean equals(Object obj) {
+                            return false;
+                        }
+                    });
+                    for (com.amplifyframework.datastore.generated.model.Task task: taskList){
+                        tasks1.add(new Task(task.getTitle(),task.getBody(),task.getState()));
+                    }
+                    handler.sendEmptyMessage(1);
+                },error->{
+                    Log.i(TAG,"Errrorrrs");
+
+                }
+        );
+        }else{
+            Amplify.API.query(
+                    ModelQuery.list(com.amplifyframework.datastore.generated.model.Task.class,
+                            com.amplifyframework.datastore.generated.model.Task.TEAM.contains(teamIdFromSettings)),
+                    success->{
+                        for (com.amplifyframework.datastore.generated.model.Task task:success.getData()){
+                            taskList.add(task);
+                        }
+                        Collections.sort(taskList, new Comparator<com.amplifyframework.datastore.generated.model.Task>() {
+                            @Override
+                            public int compare(com.amplifyframework.datastore.generated.model.Task o1, com.amplifyframework.datastore.generated.model.Task o2) {
+                                return Long.compare(o1.getCreatedAt().toDate().getTime(), o2.getCreatedAt().toDate().getTime());
+                            }
+
+                            @Override
+                            public boolean equals(Object obj) {
+                                return false;
+                            }
+                        });
+                        for (com.amplifyframework.datastore.generated.model.Task task: taskList){
+                            tasks1.add(new Task(task.getTitle(),task.getBody(),task.getState()));
+                        }
+                        handler.sendEmptyMessage(1);
+
+
+                    },error->{
+
+                    }
+            );
+        }
+
+
+
 
     }
 
@@ -173,4 +292,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+
 }

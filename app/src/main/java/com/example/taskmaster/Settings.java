@@ -10,6 +10,8 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toolbar;
 
 public class Settings extends AppCompatActivity {
@@ -47,6 +49,31 @@ public class Settings extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        RadioGroup radioGroup = findViewById(R.id.sittingsRadioGroup);
+        RadioButton radioButton1 = findViewById(R.id.team_1RBTN);
+        RadioButton radioButton2 = findViewById(R.id.team_2RBTN);
+        RadioButton radioButton3 = findViewById(R.id.team_3RBTN);
+
+        String teamName;
+
+        int getCheckButton = radioGroup.getCheckedRadioButtonId();
+        if (getCheckButton == radioButton1.getId()){
+
+            teamName = radioButton1.getText().toString();
+
+        }else if(getCheckButton == radioButton2.getId()){
+
+            teamName = radioButton2.getText().toString();
+
+        }else if(getCheckButton == radioButton3.getId()){
+
+            teamName = radioButton3.getText().toString();
+
+        }else {
+            teamName = null;
+        }
+        sh.edit().putString("settingsTeamID",teamName).apply();
 
 
     }
