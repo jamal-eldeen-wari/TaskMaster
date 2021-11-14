@@ -11,8 +11,17 @@ We also add feature that allows the user to sign up to our application and also 
 ![image description](ScreenShots/HomePageLab29.png)
 ![image description](ScreenShots/addTasksLab29.png)
 
+
+## Lab36: ScreenShots:
+<img width="960" alt="2021-11-15" src="https://user-images.githubusercontent.com/83535791/141701155-3a7e25a0-2576-459f-b3ef-da3b2556a051.png">
+
+
+
 ## Testing Screen Shot 
 <img width="960" alt="TestingScreenShot" src="https://user-images.githubusercontent.com/83535791/140648215-dcf07813-f510-4ec9-b7da-085f0d5f24e0.png">
+
+<img width="960" alt="2021-11-15 (7)" src="https://user-images.githubusercontent.com/83535791/141701164-5ae7d60a-1e54-4035-9724-cc446a2e22ce.png">
+
 
 Notes About deploying to PlayStore:
 1. Go to Google Play Developer Console and subscribe to become a developer and pay 25$ one time.
