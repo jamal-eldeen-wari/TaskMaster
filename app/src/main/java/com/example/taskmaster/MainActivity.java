@@ -25,6 +25,9 @@ import android.widget.Toolbar;
 import com.amplifyframework.AmplifyException;
 import com.amplifyframework.api.aws.AWSApiPlugin;
 import com.amplifyframework.api.graphql.model.ModelQuery;
+import com.amplifyframework.auth.AuthUserAttributeKey;
+import com.amplifyframework.auth.cognito.AWSCognitoAuthPlugin;
+import com.amplifyframework.auth.options.AuthSignUpOptions;
 import com.amplifyframework.core.Amplify;
 
 import java.util.ArrayList;
@@ -40,6 +43,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
             Button btnAdd = findViewById(R.id.addTask);
         Button btnAll = findViewById(R.id.allTasks);
+        TextView textView = findViewById(R.id.signOut);
+
 
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,17 +73,22 @@ public class MainActivity extends AppCompatActivity {
         try {
             // Add these lines to add the AWSApiPlugin plugins
             Amplify.addPlugin(new AWSApiPlugin()); // stores things in DynamoDB and allows us to perform GraphQL queries
+            Amplify.addPlugin(new AWSCognitoAuthPlugin());
             Amplify.configure(getApplicationContext());
+
 
             Log.i(TAG, "Initialized Amplify");
         } catch (AmplifyException error) {
             Log.e(TAG, "Could not initialize Amplify", error);
         }
 
+
+
         List<Task> tasks = new ArrayList<>();
         RecyclerView allTasks = findViewById(R.id.taskRecyclerView);
         allTasks.setLayoutManager(new LinearLayoutManager(this));
         allTasks.setAdapter(new TaskAdapter(tasks));
+
 
         Handler handler = new Handler(Looper.myLooper(), new Handler.Callback() {
             @SuppressLint("NotifyDataSetChanged")
@@ -102,6 +112,18 @@ public class MainActivity extends AppCompatActivity {
                 error -> Log.e("MyAmplifyApp", "Query failure", error)
         );
 
+        textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Amplify.Auth.signOut(
+                        () -> Log.i("AuthQuickstart", "Signed out successfully"),
+                        error -> Log.e("AuthQuickstart", error.toString())
+                );
+                Intent intent = new Intent(MainActivity.this, SignIn.class);
+                startActivity(intent);
+            }
+
+        });
 
 //==============================LAB27==============================================
 //        findViewById(R.id.task1).setOnClickListener(new View.OnClickListener() {
@@ -168,8 +190,11 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         String name =  sharedPreferences.getString("username","Welcome User");
+        String email =  sharedPreferences.getString("email","Welcome User");
         TextView textView = findViewById(R.id.userNameView);
+        TextView emailText = findViewById(R.id.textView22);
         textView.setText("Welcome: "+name);
+        emailText.setText("Email: "+ email);
 
 
     }
