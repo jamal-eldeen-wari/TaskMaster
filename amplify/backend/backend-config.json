@@ -43,5 +43,11 @@
         ]
       }
     }
+  },
+  "storage": {
+    "s39bee53db": {
+      "service": "S3",
+      "providerPlugin": "awscloudformation"
+    }
   }
 }
