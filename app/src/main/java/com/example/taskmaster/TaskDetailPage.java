@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toolbar;
 
@@ -38,6 +39,8 @@ public class TaskDetailPage extends AppCompatActivity {
         TextView textView1 = findViewById(R.id.titleTask);
         TextView textView2 = findViewById(R.id.bodyTask);
         TextView textView3 = findViewById(R.id.stateTask);
+        ImageView imageView = findViewById(R.id.imageView2);
+        
 
         textView1.setText(task1);
         textView2.setText(body);
