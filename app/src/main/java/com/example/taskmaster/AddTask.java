@@ -40,7 +40,7 @@ import java.util.List;
 
 public class AddTask extends AppCompatActivity {
     public static final String TAG = "ADD TASK";
-    public String imageName = "";
+    public String imageName;
     public Uri uri;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -112,19 +112,7 @@ public class AddTask extends AppCompatActivity {
                 startActivityForResult(intent,44);
             }
         });
-//        ActivityResultLauncher<Intent> someActivityResultLaunch = registerForActivityResult(
-//                new ActivityResultContracts.StartActivityForResult(),
-//                new ActivityResultCallback<ActivityResult>() {
-//                    @Override
-//                    public void onActivityResult(ActivityResult result) {
-//                        if (result.getResultCode() == Activity.RESULT_OK){
-//                            Intent intent = result.getData();
-//
-//                        }
-//                    }
-//                } {
-//                }
-//        )
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setNavigationIcon(R.drawable.ic_baseline_arrow_back_24);
 
