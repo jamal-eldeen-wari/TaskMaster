@@ -31,13 +31,16 @@ import com.amplifyframework.datastore.generated.model.Task;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.List;
 
 public class AddTask extends AppCompatActivity {
     public static final String TAG = "ADD TASK";
-    public String imageName;
+    public String imageName = "";
     public Uri uri;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -175,8 +178,30 @@ public class AddTask extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        File file = new File(data.getData().getPath());
-        imageName = file.getName();
-        uri = data.getData();
+//        File file = new File(data.getData().getPath());
+//        imageName = file.getName();
+//        uri = data.getData();
+
+        File uploadFile = new File(getApplicationContext().getFilesDir(), "uploadFileCopied");
+        try {
+            InputStream exampleInputStream = getContentResolver().openInputStream(data.getData());
+            OutputStream outputStream = new FileOutputStream(uploadFile);
+            imageName = data.getData().toString();
+            byte[] buff = new byte[1024];
+            int length;
+            while ((length = exampleInputStream.read(buff)) > 0) {
+                outputStream.write(buff, 0, length);
+            }
+            exampleInputStream.close();
+            outputStream.close();
+            Amplify.Storage.uploadFile(
+                    "image",
+                    uploadFile,
+                    result -> Log.i("MyAmplifyApp", "Successfully uploaded: " + result.getKey()),
+                    storageFailure -> Log.e("MyAmplifyApp", "Upload failed", storageFailure)
+            );
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

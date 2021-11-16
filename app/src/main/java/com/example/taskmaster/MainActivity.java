@@ -200,7 +200,7 @@ public class MainActivity extends AppCompatActivity {
                 response -> {
                     for (com.amplifyframework.datastore.generated.model.Task todo : response.getData()) {
                         tasks.add(todo);
-                        Log.i(TAG, "This is the taskOrg "+ todo);
+
                     }
                     handler.sendEmptyMessage(1);
                 },

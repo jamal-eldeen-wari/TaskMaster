@@ -5,12 +5,19 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toolbar;
+
+import com.amplifyframework.core.Amplify;
+
+import java.io.File;
 
 public class TaskDetailPage extends AppCompatActivity {
 
@@ -40,11 +47,26 @@ public class TaskDetailPage extends AppCompatActivity {
         TextView textView2 = findViewById(R.id.bodyTask);
         TextView textView3 = findViewById(R.id.stateTask);
         ImageView imageView = findViewById(R.id.imageView2);
-        
+
 
         textView1.setText(task1);
         textView2.setText(body);
         textView3.setText(state);
+
+        if (intent.getExtras().getString("img")!=null){
+            Amplify.Storage.downloadFile(
+                    intent.getExtras().getString("img"),
+                    new File(getApplicationContext().getFilesDir()+ "/" + intent.getExtras().getString("img") + ".jpg"),
+                    response->{
+                        Bitmap bitmap = BitmapFactory.decodeFile(response.getFile().getPath());
+                        imageView.setImageBitmap(bitmap);
+                        Log.i("TaskDetailsPageImage", "Successfully downloaded: " + response.getFile().getName());
+                    },
+                    error->{
+                        Log.i("TaskDetailsPageImage", "Failed to download: " + error);
+                    }
+                    );
+        }
 
 
 //        Intent intentTask1 = getIntent();
