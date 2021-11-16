@@ -13,6 +13,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TaskMaster">
         <activity android:name=".ConfirmationActivity"></activity>
+        <service android:name=".PushListenerService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
         <activity android:name=".SignIn" />
         <activity android:name=".MainActivity" />
         <activity android:name=".TaskDetailPage" />
