@@ -9,15 +9,17 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.amplifyframework.datastore.generated.model.Task;
+
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder>{
-    List<Task> allTaskData = new ArrayList<>();
+    List<com.amplifyframework.datastore.generated.model.Task> allTaskData = new ArrayList<>();
 
-    public TaskAdapter(List<Task> allTaskData) {
+    public TaskAdapter(List<com.amplifyframework.datastore.generated.model.Task> allTaskData) {
         this.allTaskData = allTaskData;
     }
 
@@ -37,17 +39,19 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
         TextView body = holder.itemView.findViewById(R.id.body);
         TextView state = holder.itemView.findViewById(R.id.state);
 
-        title.setText(holder.task.title);
-        body.setText(holder.task.body);
-        state.setText(holder.task.state);
+        title.setText(holder.task.getTitle());
+        body.setText(holder.task.getBody());
+        state.setText(holder.task.getState());
 
         holder.itemView.findViewById(R.id.constraint).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent goToDetailsPage = new Intent(v.getContext(), TaskDetailPage.class);
-                goToDetailsPage.putExtra("title",allTaskData.get(position).title );
-                goToDetailsPage.putExtra("body", allTaskData.get(position).body);
-                goToDetailsPage.putExtra("state",allTaskData.get(position).state);
+                goToDetailsPage.putExtra("title",allTaskData.get(position).getTitle());
+                goToDetailsPage.putExtra("body", allTaskData.get(position).getBody());
+                goToDetailsPage.putExtra("state",allTaskData.get(position).getState());
+                goToDetailsPage.putExtra("img", allTaskData.get(position).getImageName());
+
                 v.getContext().startActivity(goToDetailsPage);
             }
         });
@@ -60,7 +64,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
 
     public static class TaskViewHolder extends RecyclerView.ViewHolder{
 
-        public Task task;
+        public com.amplifyframework.datastore.generated.model.Task task;
 
        public View itemView;
 

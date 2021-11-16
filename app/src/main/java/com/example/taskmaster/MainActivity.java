@@ -29,6 +29,8 @@ import com.amplifyframework.auth.AuthUserAttributeKey;
 import com.amplifyframework.auth.cognito.AWSCognitoAuthPlugin;
 import com.amplifyframework.auth.options.AuthSignUpOptions;
 import com.amplifyframework.core.Amplify;
+import com.amplifyframework.datastore.generated.model.Task;
+import com.amplifyframework.storage.s3.AWSS3StoragePlugin;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -74,6 +76,7 @@ public class MainActivity extends AppCompatActivity {
             // Add these lines to add the AWSApiPlugin plugins
             Amplify.addPlugin(new AWSApiPlugin()); // stores things in DynamoDB and allows us to perform GraphQL queries
             Amplify.addPlugin(new AWSCognitoAuthPlugin());
+            Amplify.addPlugin(new AWSS3StoragePlugin());
             Amplify.configure(getApplicationContext());
 
 
@@ -84,33 +87,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        List<Task> tasks = new ArrayList<>();
-        RecyclerView allTasks = findViewById(R.id.taskRecyclerView);
-        allTasks.setLayoutManager(new LinearLayoutManager(this));
-        allTasks.setAdapter(new TaskAdapter(tasks));
 
-
-        Handler handler = new Handler(Looper.myLooper(), new Handler.Callback() {
-            @SuppressLint("NotifyDataSetChanged")
-            @Override
-            public boolean handleMessage(@NonNull Message msg) {
-
-                allTasks.getAdapter().notifyDataSetChanged();
-                return false;
-            }
-        });
-        Amplify.API.query(
-                ModelQuery.list(com.amplifyframework.datastore.generated.model.Task.class),
-                response -> {
-                    for (com.amplifyframework.datastore.generated.model.Task todo : response.getData()) {
-                        Task taskOrg = new Task(todo.getTitle(),todo.getBody(),todo.getState());
-                        Log.i("graph testing", todo.getTitle());
-                        tasks.add(taskOrg);
-                    }
-                    handler.sendEmptyMessage(1);
-                },
-                error -> Log.e("MyAmplifyApp", "Query failure", error)
-        );
 
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -195,7 +172,40 @@ public class MainActivity extends AppCompatActivity {
         TextView emailText = findViewById(R.id.textView22);
         textView.setText("Welcome: "+name);
         emailText.setText("Email: "+ email);
+        recyclerViewItem();
 
 
     }
+    private void recyclerViewItem(){
+        List<com.amplifyframework.datastore.generated.model.Task> tasks = new ArrayList<>();
+        Log.i(TAG, "This is the tasks "+ tasks);
+        RecyclerView allTasks = findViewById(R.id.taskRecyclerView);
+        allTasks.setLayoutManager(new LinearLayoutManager(this));
+        allTasks.setAdapter(new TaskAdapter(tasks));
+        Log.i(TAG, "This is the allTasks "+ allTasks);
+
+
+        Handler handler = new Handler(Looper.myLooper(), new Handler.Callback() {
+            @SuppressLint("NotifyDataSetChanged")
+            @Override
+            public boolean handleMessage(@NonNull Message msg) {
+
+                allTasks.getAdapter().notifyDataSetChanged();
+                return false;
+            }
+        });
+
+        Amplify.API.query(
+                ModelQuery.list(com.amplifyframework.datastore.generated.model.Task.class),
+                response -> {
+                    for (com.amplifyframework.datastore.generated.model.Task todo : response.getData()) {
+                        tasks.add(todo);
+
+                    }
+                    handler.sendEmptyMessage(1);
+                },
+                error -> Log.e("MyAmplifyApp", "Query failure", error)
+        );
+    }
+
 }

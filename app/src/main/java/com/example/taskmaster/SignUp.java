@@ -15,6 +15,7 @@ import com.amplifyframework.auth.AuthUserAttributeKey;
 import com.amplifyframework.auth.cognito.AWSCognitoAuthPlugin;
 import com.amplifyframework.auth.options.AuthSignUpOptions;
 import com.amplifyframework.core.Amplify;
+import com.amplifyframework.storage.s3.AWSS3StoragePlugin;
 
 public class SignUp extends AppCompatActivity {
     public static final String TAG = "SignUp";
@@ -31,6 +32,7 @@ public class SignUp extends AppCompatActivity {
             // Add these lines to add the AWSApiPlugin plugins
             Amplify.addPlugin(new AWSApiPlugin()); // stores things in DynamoDB and allows us to perform GraphQL queries
             Amplify.addPlugin(new AWSCognitoAuthPlugin());
+            Amplify.addPlugin(new AWSS3StoragePlugin());
             Amplify.configure(getApplicationContext());
 
 

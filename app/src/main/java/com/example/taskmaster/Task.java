@@ -14,6 +14,8 @@ public class Task {
     public String body;
     @ColumnInfo(name = "state")
     public String state;
+    @ColumnInfo(name = "imageName")
+    public String imageName;
 
     public Task(String title, String body, String state) {
         this.title = title;
@@ -22,5 +24,12 @@ public class Task {
     }
 
     public Task() {
+    }
+
+    public Task(String title, String body, String state, String imageName) {
+        this.title = title;
+        this.body = body;
+        this.state = state;
+        this.imageName = imageName;
     }
 }

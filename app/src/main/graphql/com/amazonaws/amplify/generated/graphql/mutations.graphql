@@ -8,9 +8,7 @@ mutation CreateTask(
     title
     body
     state
-    _version
-    _deleted
-    _lastChangedAt
+    imageName
     createdAt
     updatedAt
   }
@@ -24,9 +22,7 @@ mutation UpdateTask(
     title
     body
     state
-    _version
-    _deleted
-    _lastChangedAt
+    imageName
     createdAt
     updatedAt
   }
@@ -40,9 +36,7 @@ mutation DeleteTask(
     title
     body
     state
-    _version
-    _deleted
-    _lastChangedAt
+    imageName
     createdAt
     updatedAt
   }
