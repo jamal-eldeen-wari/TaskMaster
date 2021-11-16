@@ -8,6 +8,8 @@ We added a testing functionality to our code to test the effeciency of our app t
 ## Lab26: Screenshots
 ![image description](ScreenShots/HomePageLab29.png)
 ![image description](ScreenShots/addTasksLab29.png)
+<img width="960" alt="2021-11-16 (3)" src="https://user-images.githubusercontent.com/83535791/142072905-bed78325-8732-4854-aaf9-e6739da1fb11.png">
+<img width="960" alt="2021-11-16 (4)" src="https://user-images.githubusercontent.com/83535791/142072922-1c4b7813-3a5c-4f4d-8701-65b0432e63aa.png">
 
 ## Testing Screen Shot 
 <img width="960" alt="TestingScreenShot" src="https://user-images.githubusercontent.com/83535791/140648215-dcf07813-f510-4ec9-b7da-085f0d5f24e0.png">
