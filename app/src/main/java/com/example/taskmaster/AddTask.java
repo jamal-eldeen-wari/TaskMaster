@@ -170,6 +170,7 @@ public class AddTask extends AppCompatActivity {
                         storageFailure -> Log.e("MyAmplifyApp", "Upload failed", storageFailure)
                 );
             } catch (FileNotFoundException error) {
+//                Here is a comment
                 Log.e("MyAmplifyApp", "Could not find file to open for input stream.", error);
             }
         }
