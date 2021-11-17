@@ -6,6 +6,9 @@ subscription OnCreateTask {
     body
     state
     imageName
+    _version
+    _deleted
+    _lastChangedAt
     createdAt
     updatedAt
   }
@@ -17,6 +20,9 @@ subscription OnUpdateTask {
     body
     state
     imageName
+    _version
+    _deleted
+    _lastChangedAt
     createdAt
     updatedAt
   }
@@ -28,6 +34,9 @@ subscription OnDeleteTask {
     body
     state
     imageName
+    _version
+    _deleted
+    _lastChangedAt
     createdAt
     updatedAt
   }

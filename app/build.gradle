@@ -56,6 +56,7 @@ dependencies {
     implementation 'androidx.multidex:multidex:2.0.1'
     implementation 'com.amplifyframework:aws-auth-cognito:1.28.3'
     implementation 'com.amplifyframework:aws-storage-s3:1.28.3'
+    implementation 'com.amplifyframework:aws-analytics-pinpoint:1.29.0'
     testImplementation 'junit:junit:4.+'
     implementation 'com.github.onimur:handle-path-oz:1.0.7'
     implementation 'com.squareup.picasso:picasso:2.71828'

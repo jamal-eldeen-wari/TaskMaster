@@ -33,6 +33,11 @@ import com.amazonaws.mobileconnectors.pinpoint.targeting.TargetingClient;
 import com.amazonaws.mobileconnectors.pinpoint.targeting.endpointProfile.EndpointProfile;
 import com.amazonaws.mobileconnectors.pinpoint.targeting.endpointProfile.EndpointProfileUser;
 import com.amplifyframework.AmplifyException;
+import com.amplifyframework.analytics.AnalyticsEvent;
+import com.amplifyframework.analytics.AnalyticsProperties;
+import com.amplifyframework.analytics.UserProfile;
+import com.amplifyframework.analytics.pinpoint.AWSPinpointAnalyticsPlugin;
+import com.amplifyframework.analytics.pinpoint.models.AWSPinpointUserProfile;
 import com.amplifyframework.api.aws.AWSApiPlugin;
 import com.amplifyframework.api.graphql.model.ModelQuery;
 import com.amplifyframework.auth.AuthUserAttributeKey;
@@ -91,6 +96,7 @@ public class MainActivity extends AppCompatActivity {
             Amplify.addPlugin(new AWSApiPlugin()); // stores things in DynamoDB and allows us to perform GraphQL queries
             Amplify.addPlugin(new AWSCognitoAuthPlugin());
             Amplify.addPlugin(new AWSS3StoragePlugin());
+            Amplify.addPlugin(new AWSPinpointAnalyticsPlugin(getApplication()));
             Amplify.configure(getApplicationContext());
 
 
@@ -115,6 +121,47 @@ public class MainActivity extends AppCompatActivity {
             }
 
         });
+
+        AnalyticsEvent event = AnalyticsEvent.builder()
+                .name("PasswordReset")
+                .addProperty("Channel", "SMS")
+                .addProperty("Successful", true)
+                .addProperty("ProcessDuration", 792)
+                .addProperty("UserAge", 120.3)
+                .build();
+
+        Amplify.Analytics.recordEvent(event);
+
+        UserProfile.Location location = UserProfile.Location.builder()
+                .latitude(31.992079)
+                .longitude(35.845488)
+                .postalCode("11118")
+                .city("Amman")
+                .region("Khilda")
+                .country("Jordan")
+                .build();
+
+        AnalyticsProperties customProperties = AnalyticsProperties.builder()
+                .add("property1", "Property value")
+                .build();
+
+        AnalyticsProperties userAttributes = AnalyticsProperties.builder()
+                .add("someUserAttribute", "User attribute value")
+                .build();
+
+        AWSPinpointUserProfile profile = AWSPinpointUserProfile.builder()
+                .name("Jamal Wari")
+                .email("warijamalk@gmail.com")
+                .plan("To Hate Errorororroororororororororororsssss")
+                .location(location)
+                .customProperties(customProperties)
+                .userAttributes(userAttributes)
+                .build();
+
+        String userId = Amplify.Auth.getCurrentUser().getUserId();
+
+        Amplify.Analytics.identifyUser(userId, profile);
+
 
 //==============================LAB27==============================================
 //        findViewById(R.id.task1).setOnClickListener(new View.OnClickListener() {
