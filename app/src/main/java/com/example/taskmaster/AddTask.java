@@ -195,7 +195,7 @@ public class AddTask extends AppCompatActivity {
             exampleInputStream.close();
             outputStream.close();
             Amplify.Storage.uploadFile(
-                    "image",
+                    "image"+".jpg",
                     uploadFile,
                     result -> Log.i("MyAmplifyApp", "Successfully uploaded: " + result.getKey()),
                     storageFailure -> Log.e("MyAmplifyApp", "Upload failed", storageFailure)
