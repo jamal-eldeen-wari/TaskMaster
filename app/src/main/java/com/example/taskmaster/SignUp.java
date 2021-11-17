@@ -13,6 +13,8 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.amplifyframework.AmplifyException;
+import com.amplifyframework.analytics.AnalyticsEvent;
+import com.amplifyframework.analytics.pinpoint.AWSPinpointAnalyticsPlugin;
 import com.amplifyframework.api.aws.AWSApiPlugin;
 import com.amplifyframework.auth.AuthUserAttributeKey;
 import com.amplifyframework.auth.cognito.AWSCognitoAuthPlugin;
@@ -36,6 +38,7 @@ public class SignUp extends AppCompatActivity {
             Amplify.addPlugin(new AWSApiPlugin()); // stores things in DynamoDB and allows us to perform GraphQL queries
             Amplify.addPlugin(new AWSCognitoAuthPlugin());
             Amplify.addPlugin(new AWSS3StoragePlugin());
+            Amplify.addPlugin(new AWSPinpointAnalyticsPlugin(getApplication()));
             Amplify.configure(getApplicationContext());
 
 
@@ -43,6 +46,15 @@ public class SignUp extends AppCompatActivity {
         } catch (AmplifyException error) {
             Log.e(TAG, "Could not initialize Amplify", error);
         }
+        AnalyticsEvent event = AnalyticsEvent.builder()
+                .name("PasswordReset")
+                .addProperty("Channel", "SMS")
+                .addProperty("Successful", true)
+                .addProperty("ProcessDuration", 792)
+                .addProperty("UserAge", 120.3)
+                .build();
+
+        Amplify.Analytics.recordEvent(event);
 
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
