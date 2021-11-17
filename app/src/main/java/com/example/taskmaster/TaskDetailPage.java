@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toolbar;
 
 import com.amplifyframework.core.Amplify;
+import com.squareup.picasso.Picasso;
 
 import java.io.File;
 
@@ -46,42 +47,17 @@ public class TaskDetailPage extends AppCompatActivity {
         TextView textView1 = findViewById(R.id.titleTask);
         TextView textView2 = findViewById(R.id.bodyTask);
         TextView textView3 = findViewById(R.id.stateTask);
-        ImageView imageView = findViewById(R.id.imageView2);
+
 
 
         textView1.setText(task1);
         textView2.setText(body);
         textView3.setText(state);
 
-        if (intent.getExtras().getString("img")!=null){
-            Amplify.Storage.downloadFile(
-                    intent.getExtras().getString("img"),
-                    new File(getApplicationContext().getFilesDir()+ "/" + intent.getExtras().getString("img") + ".jpg"),
-                    response->{
-                        Bitmap bitmap = BitmapFactory.decodeFile(response.getFile().getPath());
-                        imageView.setImageBitmap(bitmap);
-                        Log.i("TaskDetailsPageImage", "Successfully downloaded: " + response.getFile().getName());
-                    },
-                    error->{
-                        Log.i("TaskDetailsPageImage", "Failed to download: " + error);
-                    }
-                    );
-        }
+        String url = intent.getExtras().getString("img");
+        ImageView image = findViewById(R.id.imageView2);
+        Picasso.get().load(url).into(image);
 
 
-//        Intent intentTask1 = getIntent();
-//        String task1 = intentTask1.getExtras().getString("task1");
-//        TextView textView1 = findViewById(R.id.textView14);
-//        textView1.setText(task1);
-//
-//        Intent intentTask2 = getIntent();
-//        String task2 = intentTask2.getExtras().getString("task2");
-//        @SuppressLint("CutPasteId") TextView textView2 = findViewById(R.id.textView14);
-//        textView2.setText(task2);
-//
-//        Intent intentTask3 = getIntent();
-//        String task3 = intentTask3.getExtras().getString("task3");
-//        @SuppressLint("CutPasteId") TextView textView3 = findViewById(R.id.textView14);
-//        textView3.setText(task3);
     }
 }
