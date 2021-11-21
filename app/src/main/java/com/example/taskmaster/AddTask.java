@@ -20,6 +20,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Toolbar;
@@ -97,21 +98,30 @@ public class AddTask extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 uploadInputStream();
-//                ActivityResultLauncher<Intent> someActivityResultLaunch = registerForActivityResult(
-//                        new ActivityResultContracts.StartActivityForResult(),
-//                        result -> {
-//                            if (result.getResultCode() == Activity.RESULT_OK){
-//                                Intent intent = result.getData();
-//                            }
-//                        }
-//                );
 
-                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-                intent.setType("*/*");
-                intent = Intent.createChooser(intent,"intent");
-                startActivityForResult(intent,44);
+
+                Intent intent1 = new Intent(Intent.ACTION_GET_CONTENT);
+                intent1.setType("*/*");
+                intent1 = Intent.createChooser(intent1,"intent");
+                startActivityForResult(intent1,44);
             }
         });
+//        Took It from qusai
+        Intent intent = getIntent();
+        String action = intent.getAction();
+        String type = intent.getType();
+        ImageView image = findViewById(R.id.imageView3);
+        if (Intent.ACTION_SEND.equals(action) && type != null) {
+            if (type.startsWith("image/")) {
+                Uri imageUri = (Uri) intent.getParcelableExtra(Intent.EXTRA_STREAM);
+                if (imageUri != null) {
+                    image.setImageURI(imageUri);
+                    image.setVisibility(View.VISIBLE);
+
+                }
+            }
+        }
+
 //        ActivityResultLauncher<Intent> someActivityResultLaunch = registerForActivityResult(
 //                new ActivityResultContracts.StartActivityForResult(),
 //                new ActivityResultCallback<ActivityResult>() {
