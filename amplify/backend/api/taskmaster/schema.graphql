@@ -4,4 +4,6 @@ type Task @model {
   body: String!
   state:String!
   imageName:String!
+  lat: Float
+  lon: Float
 }

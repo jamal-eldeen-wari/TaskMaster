@@ -14,6 +14,8 @@ import android.widget.Toolbar;
 
 public class Settings extends AppCompatActivity {
 
+    public static final String ACTION_LOCATION_SOURCE_SETTINGS = "LOCATION_SOURCE";
+
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {

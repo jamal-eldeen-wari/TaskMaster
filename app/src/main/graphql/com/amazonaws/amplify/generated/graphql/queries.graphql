@@ -17,6 +17,8 @@ query SyncTasks(
       body
       state
       imageName
+      lat
+      lon
       _version
       _deleted
       _lastChangedAt
@@ -34,6 +36,8 @@ query GetTask($id: ID!) {
     body
     state
     imageName
+    lat
+    lon
     _version
     _deleted
     _lastChangedAt
@@ -53,6 +57,8 @@ query ListTasks(
       body
       state
       imageName
+      lat
+      lon
       _version
       _deleted
       _lastChangedAt

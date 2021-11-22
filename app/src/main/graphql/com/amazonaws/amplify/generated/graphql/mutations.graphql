@@ -9,6 +9,8 @@ mutation CreateTask(
     body
     state
     imageName
+    lat
+    lon
     _version
     _deleted
     _lastChangedAt
@@ -26,6 +28,8 @@ mutation UpdateTask(
     body
     state
     imageName
+    lat
+    lon
     _version
     _deleted
     _lastChangedAt
@@ -43,6 +47,8 @@ mutation DeleteTask(
     body
     state
     imageName
+    lat
+    lon
     _version
     _deleted
     _lastChangedAt
