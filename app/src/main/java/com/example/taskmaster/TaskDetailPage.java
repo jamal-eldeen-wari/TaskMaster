@@ -76,8 +76,9 @@ public class TaskDetailPage extends AppCompatActivity implements OnMapReadyCallb
     @Override
     public void onMapReady(@NonNull GoogleMap googleMap) {
 //        this.googleMap = googleMap;
-        LatLng myLocation = new LatLng(getIntent().getDoubleExtra("lat", 31.9920796),
-                getIntent().getDoubleExtra("lon", 35.8454808));
+        Intent intent = getIntent();
+        LatLng myLocation = new LatLng(getIntent().getDoubleExtra("lat", intent.getFloatExtra("lat",0)),
+                getIntent().getDoubleExtra("lon", intent.getFloatExtra("lon",0)));
         googleMap.addMarker(new MarkerOptions().position(myLocation).title("My Location In Jordan"));
         googleMap.moveCamera(CameraUpdateFactory.newLatLng(myLocation));
     }
